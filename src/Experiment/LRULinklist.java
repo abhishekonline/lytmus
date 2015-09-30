@@ -54,6 +54,7 @@ public class LRULinklist<t> {
 		}else{
 			prev.next=node.next;
 			node.next.prev=prev;
+		
 		}
 		hm.remove(node.key);
 	}
@@ -72,10 +73,11 @@ public class LRULinklist<t> {
 	public static void main(String args[]){
 		LRULinklist<String> obj= new LRULinklist<>(3);
 		obj.set(1, "test1");
+		obj.get(2);
 		obj.set(2, "test2");
 		obj.set(3, "test3");
 		obj.set(4, "test4");
-		nodeDouble<String> ans= obj.get(3);
+		nodeDouble<String> ans= obj.get(1);
 		System.out.println(ans.value);
 		
 	}

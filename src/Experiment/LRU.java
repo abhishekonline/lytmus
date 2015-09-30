@@ -3,8 +3,7 @@ package Experiment;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class LRU extends LinkedHashMap<Integer, Integer>{
-	private static final long serialVersionUID = 1L;
+public class LRU extends LinkedHashMap<String, Integer>{
 	   private int capacity;
 	    
 	   public LRU(int capacity, float loadFactor){
@@ -17,17 +16,21 @@ public class LRU extends LinkedHashMap<Integer, Integer>{
 	    * remove the oldest object from the Map.
 	    */
 	   @Override
-	   protected boolean removeEldestEntry(Map.Entry<Integer, Integer> eldest){
+	   protected boolean removeEldestEntry(Map.Entry<String, Integer> eldest){
 	      return size() > this.capacity;
 	   }
 	
 	public static void main(String args[]){
 		LRU cache= new LRU(3,0.1f);
-		cache.put(1, 11);
-		cache.put(2, 22);
-		cache.put(3, 33);
-		cache.put(4, 44);
-		cache.put(5, 55);
+		cache.put("home", 1);
+		cache.put("work", 1);
+		cache.put("home", 1);
+		
+		cache.put("home", 1);
+		cache.put("home", 55);
+		if(cache.containsKey("home")){
+			cache.put("home", cache.get("home")+1);
+		}
 		System.out.println(cache);
 	}
 }
